@@ -1,1 +1,1 @@
-Base classes for anso/http and anso/console frameworks.
+Libraries.

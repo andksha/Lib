@@ -2,7 +2,7 @@
 
 namespace Anso\Lib\Exception;
 
-use Anso\Framework\Contract\ApplicationException;
+use Anso\Framework\Base\Contract\ApplicationException;
 use Exception;
 
 class AuthorizationException extends Exception implements ApplicationException

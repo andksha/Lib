@@ -1,19 +1,19 @@
 <?php
 
-namespace Anso\Lib;
+namespace Anso\Lib\Auth;
 
-use Anso\Framework\Contract\Authenticatable;
+use Anso\Lib\Contract\Authenticatable;
 use Anso\Lib\Exception\AuthorizationException;
-use Anso\Framework\Contract\EntityManager as EntityManagerInterface;
+use Anso\Lib\Contract\EntityManager;
 
 class Authenticator
 {
     private string $subject;
     private Authenticatable $user;
 
-    private EntityManagerInterface $em;
+    private EntityManager $em;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManager $em)
     {
         $this->em = $em;
     }

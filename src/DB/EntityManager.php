@@ -1,17 +1,18 @@
 <?php
 
-namespace Framework;
+namespace Anso\Lib\DB;
 
-use Doctrine\ORM\EntityManagerInterface;
+use Anso\Lib\Contract\EntityManager as EntityManagerInterface;
+use Doctrine\ORM\EntityManagerInterface as DoctrineEntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
-class EntityManager implements Contract\EntityManager
+class EntityManager implements EntityManagerInterface
 {
-    private EntityManagerInterface $entityManager;
+    private DoctrineEntityManagerInterface $entityManager;
     private QueryBuilder $queryBuilder;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(DoctrineEntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
     }
@@ -26,21 +27,21 @@ class EntityManager implements Contract\EntityManager
         $this->entityManager->flush();
     }
 
-    public function select($select = null): Contract\EntityManager
+    public function select($select = null): EntityManagerInterface
     {
         $this->queryBuilder = $this->entityManager->createQueryBuilder()->select($select);
 
         return $this;
     }
 
-    public function from($from, $alias, $indexBy = null): Contract\EntityManager
+    public function from($from, $alias, $indexBy = null): EntityManagerInterface
     {
         $this->queryBuilder->from($from, $alias, $indexBy);
 
         return $this;
     }
 
-    public function orderBy($sort, $order = null): Contract\EntityManager
+    public function orderBy($sort, $order = null): EntityManagerInterface
     {
         $this->queryBuilder->orderBy($sort, $order);
 
